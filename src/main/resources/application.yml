@@ -1,1 +1,35 @@
+spring:
+  profiles:
+    active: local
 
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:h2:mem:testdb;
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: mysql
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/springbatch
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  batch:
+    job:
+      name: helloJob
+    jdbc:
+      initialize-schema: always
